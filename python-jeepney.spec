@@ -3,27 +3,20 @@
 
 Name:           python-%{pypi_name}
 Version:        0.6.0
-Release:        %mkrel 1
+Release:        1
 Summary:        Low-level, pure Python DBus protocol wrapper
 Group:          Development/Python
 License:        MIT
 URL:            https://pypi.org/project/jeepney
-Source0:        %{pypi_source}
+Source0:        https://files.pythonhosted.org/packages/bb/4f/06017fbbe94eeaf1e7852c2dd7a065ca7d813e17b4500f4e842531d72593/jeepney-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python)
 BuildRequires:  python3dist(setuptools)
 
-%description
-This is a low-level, pure Python DBus protocol client. It has an I/O-free core,
-and integration modules for different event loops.
-
-%package -n     python3-%{pypi_name}
-Summary:        Low-level, pure Python DBus protocol wrapper
-Group:          Development/Python
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
-%description -n python3-%{pypi_name}
+%description
 This is a low-level, pure Python DBus protocol client. It has an I/O-free core,
 and integration modules for different event loops.
 
@@ -31,13 +24,13 @@ and integration modules for different event loops.
 %autosetup -n %{pypi_name}-%{version}
 
 %build
-%py3_build
+%py_build
 
 %install
-%py3_install
+%py_install
 
-%files -n python3-%{pypi_name}
+%files
 %license LICENSE
 %doc README.rst
-%{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
+%{python_sitelib}/%{pypi_name}
+%{python_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
