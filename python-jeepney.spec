@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.6.0
-Release:        2
+Release:        3
 Summary:        Low-level, pure Python DBus protocol wrapper
 Group:          Development/Python
 License:        MIT
